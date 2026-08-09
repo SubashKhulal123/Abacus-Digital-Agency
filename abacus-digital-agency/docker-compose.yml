@@ -1,0 +1,79 @@
+# ------------------------------------------------------------------
+# Full-stack local/staging orchestration.
+#
+# Usage:
+#   cp backend/.env.example backend/.env    # fill in real Cloudinary/SMTP values
+#   docker compose up --build
+#
+# Frontend: http://localhost:8080
+# Backend:  http://localhost:5000/api/v1/health
+# Mongo Express (DB admin UI): http://localhost:8081
+#
+# Note: MongoDB itself runs in this compose file for convenience, but
+# for real production traffic, MongoDB Atlas (see docs/MONGODB_SETUP.md)
+# is strongly recommended over a self-hosted container — you get managed
+# backups, monitoring, and automatic failover without operating it yourself.
+# ------------------------------------------------------------------
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: abacus-mongodb
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: abacus_digital_agency
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: abacus-backend
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    ports:
+      - '5000:5000'
+    env_file:
+      - ./backend/.env
+    environment:
+      # Overrides .env's MONGO_URI to point at the compose-network mongo
+      # service by its service name, not localhost — safe to leave in
+      # .env as a localhost/Atlas value for non-Docker development.
+      MONGO_URI: mongodb://mongodb:27017/abacus_digital_agency
+    volumes:
+      - backend-logs:/app/src/utils/logs
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:5000/api/v1
+    container_name: abacus-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - '8080:80'
+
+  mongo-express:
+    image: mongo-express:1
+    container_name: abacus-mongo-express
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    ports:
+      - '8081:8081'
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: changeme
+
+volumes:
+  mongo-data:
+  backend-logs:

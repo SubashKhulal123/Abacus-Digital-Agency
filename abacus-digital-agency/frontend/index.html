@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- Primary SEO (overridden per-route via a Helmet/SEO component in later phases) -->
+    <title>Abacus Digital Agency — Product Design & Engineering Studio</title>
+    <meta
+      name="description"
+      content="Abacus Digital Agency designs and builds high-performance web platforms, brands, and products for ambitious companies worldwide."
+    />
+    <meta name="theme-color" content="#0B0B12" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="canonical" href="/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Abacus Digital Agency" />
+    <meta property="og:title" content="Abacus Digital Agency — Product Design & Engineering Studio" />
+    <meta
+      property="og:description"
+      content="We engineer digital experiences that convert — web platforms, brand systems, and products built for scale."
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Preconnect for font performance -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+
+    <!-- Fontshare: General Sans (display), Switzer (body), JetBrains Mono is loaded via Google Fonts below -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=general-sans@700,600,500,400&f[]=switzer@400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--
+      Prevents a flash of the wrong theme on load by reading the persisted
+      theme/mode preference (or system preference) before React hydrates.
+      This is intentionally a tiny inline script, not an external file, so
+      it blocks nothing and runs before first paint.
+    -->
+    <script>
+      (function () {
+        try {
+          var storedTheme = localStorage.getItem('abacus-theme') || 'midnight-violet';
+          var storedMode = localStorage.getItem('abacus-mode');
+          if (!storedMode) {
+            storedMode = window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+          }
+          document.documentElement.setAttribute('data-theme', storedTheme);
+          document.documentElement.setAttribute('data-mode', storedMode);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'midnight-violet');
+          document.documentElement.setAttribute('data-mode', 'dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

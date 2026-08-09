@@ -1,0 +1,204 @@
+/**
+ * ABACUS DIGITAL AGENCY — THEME SYSTEM
+ * ------------------------------------------------------------------
+ * Each theme is a self-contained palette activated by two data
+ * attributes on <html>: data-theme="<theme-name>" data-mode="dark|light"
+ * Values are RGB triplets (no commas) so Tailwind can apply alpha via
+ * rgb(var(--x) / <alpha-value>).
+ *
+ * Themes:
+ *   1. midnight-violet — signature theme, indigo/violet on near-black
+ *   2. electric-blue    — cyan-blue on deep navy
+ *   3. emerald-noir     — emerald/teal on charcoal-green
+ *   4. sunset-amber     — warm amber/orange on espresso-brown-black
+ *   5. crimson-steel    — red/rose on cool graphite
+ * ------------------------------------------------------------------
+ */
+
+:root {
+  /* Fallback — same as midnight-violet / dark, applied before JS hydrates data-theme */
+  --color-bg: 11 11 18;
+  --color-surface: 20 20 31;
+  --color-surface-elevated: 28 28 43;
+  --color-border: 42 42 61;
+  --color-border-subtle: 31 31 46;
+  --color-text-primary: 244 243 248;
+  --color-text-secondary: 180 178 196;
+  --color-text-muted: 122 120 144;
+  --color-accent: 124 92 252;
+  --color-accent-secondary: 196 181 253;
+  --color-accent-foreground: 255 255 255;
+  --color-success: 52 211 153;
+  --color-warning: 251 191 36;
+  --color-danger: 251 113 133;
+}
+
+/* ==================== 1. MIDNIGHT VIOLET ==================== */
+[data-theme='midnight-violet'][data-mode='dark'] {
+  --color-bg: 11 11 18;
+  --color-surface: 20 20 31;
+  --color-surface-elevated: 28 28 43;
+  --color-border: 42 42 61;
+  --color-border-subtle: 31 31 46;
+  --color-text-primary: 244 243 248;
+  --color-text-secondary: 180 178 196;
+  --color-text-muted: 122 120 144;
+  --color-accent: 124 92 252;
+  --color-accent-secondary: 196 181 253;
+  --color-accent-foreground: 255 255 255;
+  --color-success: 52 211 153;
+  --color-warning: 251 191 36;
+  --color-danger: 251 113 133;
+}
+[data-theme='midnight-violet'][data-mode='light'] {
+  --color-bg: 247 246 251;
+  --color-surface: 255 255 255;
+  --color-surface-elevated: 251 250 254;
+  --color-border: 228 226 239;
+  --color-border-subtle: 237 235 246;
+  --color-text-primary: 20 18 31;
+  --color-text-secondary: 75 72 96;
+  --color-text-muted: 134 130 156;
+  --color-accent: 124 92 252;
+  --color-accent-secondary: 109 40 217;
+  --color-accent-foreground: 255 255 255;
+  --color-success: 5 150 105;
+  --color-warning: 217 119 6;
+  --color-danger: 225 29 72;
+}
+
+/* ==================== 2. ELECTRIC BLUE ==================== */
+[data-theme='electric-blue'][data-mode='dark'] {
+  --color-bg: 6 11 20;
+  --color-surface: 15 27 46;
+  --color-surface-elevated: 20 36 61;
+  --color-border: 34 52 79;
+  --color-border-subtle: 22 39 61;
+  --color-text-primary: 239 246 255;
+  --color-text-secondary: 169 194 222;
+  --color-text-muted: 110 134 163;
+  --color-accent: 47 143 255;
+  --color-accent-secondary: 125 211 252;
+  --color-accent-foreground: 6 16 25;
+  --color-success: 52 211 153;
+  --color-warning: 251 191 36;
+  --color-danger: 251 113 133;
+}
+[data-theme='electric-blue'][data-mode='light'] {
+  --color-bg: 245 249 255;
+  --color-surface: 255 255 255;
+  --color-surface-elevated: 251 253 255;
+  --color-border: 220 231 245;
+  --color-border-subtle: 234 241 251;
+  --color-text-primary: 11 21 38;
+  --color-text-secondary: 62 89 117;
+  --color-text-muted: 124 147 172;
+  --color-accent: 47 143 255;
+  --color-accent-secondary: 11 99 214;
+  --color-accent-foreground: 255 255 255;
+  --color-success: 5 150 105;
+  --color-warning: 217 119 6;
+  --color-danger: 225 29 72;
+}
+
+/* ==================== 3. EMERALD NOIR ==================== */
+[data-theme='emerald-noir'][data-mode='dark'] {
+  --color-bg: 8 17 13;
+  --color-surface: 15 28 22;
+  --color-surface-elevated: 22 40 31;
+  --color-border: 36 57 46;
+  --color-border-subtle: 24 38 32;
+  --color-text-primary: 241 251 246;
+  --color-text-secondary: 169 207 188;
+  --color-text-muted: 110 150 131;
+  --color-accent: 47 217 138;
+  --color-accent-secondary: 110 231 183;
+  --color-accent-foreground: 4 20 12;
+  --color-success: 52 211 153;
+  --color-warning: 251 191 36;
+  --color-danger: 251 113 133;
+}
+[data-theme='emerald-noir'][data-mode='light'] {
+  --color-bg: 245 251 248;
+  --color-surface: 255 255 255;
+  --color-surface-elevated: 251 254 252;
+  --color-border: 217 238 227;
+  --color-border-subtle: 233 246 240;
+  --color-text-primary: 8 23 15;
+  --color-text-secondary: 53 89 74;
+  --color-text-muted: 116 152 138;
+  --color-accent: 47 217 138;
+  --color-accent-secondary: 15 157 92;
+  --color-accent-foreground: 255 255 255;
+  --color-success: 5 150 105;
+  --color-warning: 217 119 6;
+  --color-danger: 225 29 72;
+}
+
+/* ==================== 4. SUNSET AMBER ==================== */
+[data-theme='sunset-amber'][data-mode='dark'] {
+  --color-bg: 18 13 8;
+  --color-surface: 29 20 12;
+  --color-surface-elevated: 40 27 16;
+  --color-border: 61 44 26;
+  --color-border-subtle: 41 28 17;
+  --color-text-primary: 251 243 234;
+  --color-text-secondary: 216 183 154;
+  --color-text-muted: 160 128 95;
+  --color-accent: 255 138 61;
+  --color-accent-secondary: 255 201 138;
+  --color-accent-foreground: 26 15 4;
+  --color-success: 52 211 153;
+  --color-warning: 251 191 36;
+  --color-danger: 251 113 133;
+}
+[data-theme='sunset-amber'][data-mode='light'] {
+  --color-bg: 253 248 243;
+  --color-surface: 255 255 255;
+  --color-surface-elevated: 255 251 247;
+  --color-border: 240 221 199;
+  --color-border-subtle: 247 236 221;
+  --color-text-primary: 29 16 6;
+  --color-text-secondary: 107 74 44;
+  --color-text-muted: 161 127 85;
+  --color-accent: 255 138 61;
+  --color-accent-secondary: 201 99 26;
+  --color-accent-foreground: 255 255 255;
+  --color-success: 5 150 105;
+  --color-warning: 217 119 6;
+  --color-danger: 225 29 72;
+}
+
+/* ==================== 5. CRIMSON STEEL ==================== */
+[data-theme='crimson-steel'][data-mode='dark'] {
+  --color-bg: 13 11 13;
+  --color-surface: 25 22 25;
+  --color-surface-elevated: 34 30 34;
+  --color-border: 54 47 54;
+  --color-border-subtle: 33 29 33;
+  --color-text-primary: 250 245 246;
+  --color-text-secondary: 210 191 196;
+  --color-text-muted: 148 129 138;
+  --color-accent: 255 70 97;
+  --color-accent-secondary: 255 152 166;
+  --color-accent-foreground: 26 5 8;
+  --color-success: 52 211 153;
+  --color-warning: 251 191 36;
+  --color-danger: 251 113 133;
+}
+[data-theme='crimson-steel'][data-mode='light'] {
+  --color-bg: 251 246 247;
+  --color-surface: 255 255 255;
+  --color-surface-elevated: 255 252 253;
+  --color-border: 242 222 225;
+  --color-border-subtle: 248 235 236;
+  --color-text-primary: 27 12 15;
+  --color-text-secondary: 97 53 59;
+  --color-text-muted: 156 115 121;
+  --color-accent: 255 70 97;
+  --color-accent-secondary: 214 16 58;
+  --color-accent-foreground: 255 255 255;
+  --color-success: 5 150 105;
+  --color-warning: 217 119 6;
+  --color-danger: 225 29 72;
+}

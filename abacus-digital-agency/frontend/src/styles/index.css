@@ -1,0 +1,106 @@
+@import './themes.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Fonts are loaded via Fontshare in index.html:
+   General Sans (display), Switzer (body), JetBrains Mono (utility/code)
+   ------------------------------------------------------------------ */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: auto; /* Lenis takes over smooth scrolling */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg text-text font-body antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  /* Tabular numerals for stats/counters so digits don't jitter in width
+     as they animate (see AnimatedCounter) */
+  .tabular-nums {
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+  }
+
+  /* Respect users who've asked for less motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Visible, on-brand keyboard focus ring — never remove focus outlines */
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: rgb(var(--color-accent) / 0.3);
+    color: rgb(var(--color-text-primary));
+  }
+
+  /* Custom scrollbar — WebKit */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--color-border));
+    border-radius: 999px;
+    border: 2px solid rgb(var(--color-bg));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(var(--color-accent) / 0.6);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--color-border)) transparent;
+  }
+}
+
+@layer components {
+  /* Reusable glassmorphism surface — used across cards, nav, modals */
+  .glass-panel {
+    @apply bg-bg-surface/60 backdrop-blur-xl border border-border-subtle shadow-glass;
+  }
+
+  /* Gradient text utility for headline accents */
+  .text-gradient {
+    background: linear-gradient(
+      120deg,
+      rgb(var(--color-accent)),
+      rgb(var(--color-accent-secondary))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
